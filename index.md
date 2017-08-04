@@ -1,3 +1,3 @@
 # List of guides
 
-* [Using gromacs force distribution analysis tool with NAMD trajectories](https://hits-mbm.github.io/guides/namd-fda.html)
+* [Using GROMACS force distribution analysis (FDA) tool with NAMD trajectories](https://hits-mbm.github.io/guides/namd-fda.html)
