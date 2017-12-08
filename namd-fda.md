@@ -62,9 +62,9 @@ Now create the file named `mdp_file.mdp` which contains for example the followin
 	; Pull type: no, umbrella, constraint or constant_force
 	pull		= no
 
-The mdp file will not be used but is needed to creat the tpr file.
+The only part of the mdp file which is used is the part which is relevant for calculating the forces. (Lennard-Jones and Coulomb interaction) Choose these parameters in a way that they are consistent with the original NAMD simulation. 
 
-Having created the mdp file run: `gmx editconf -f pdb_file.pdb -o gro_file.gro -d 1` which creates the gro file from the pdb file. The -d 1 adds a box around the System with a distance of 1nm between the wall of the box and the System. Be careful the box might need to be bigger if the system rotates during the simulation.
+Having created the mdp file run: `gmx editconf -f pdb_file.pdb -o gro_file.gro -box x y z` which creates the gro file from the pdb file. The -box x y z adds a PBC to the System, where x, y and z are the sidelengths of the box in nm. Use the same PBC as for the original simulation in NAMD.
 Now one can create the tpr file: `gmx grompp -f mdp_file.mdp -c gro_file.gro -p top.top -o tpr_file.tpr`
 Now use `gmx make_ndx -f tpr_file.tpr` to create the `index.ndx` file. In this file one can specify different atom groups in the system, for example by atom type.
 After this one has to create an `input.pfi` which looks for example like the following:
